@@ -4,13 +4,13 @@ module.exports = {
   publicPath: "./", // 基本路径
   outputDir: "dist", // 输出文件目录
   lintOnSave: false, // eslint-loader 是否在保存的时候检查
+
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // webpack配置
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.resolve.symlinks(true);
-
   },
-  configureWebpack: config => {
+  configureWebpack: (config) => {
     if (process.env.NODE_ENV === "production") {
       // 为生产环境修改配置...
       config.mode = "production";
@@ -21,13 +21,19 @@ module.exports = {
     Object.assign(config, {
       // 开发生产共同配置
       resolve: {
+        extensions: [".js", ".json", ".vue"],
         alias: {
           "@": path.resolve(__dirname, "./src"),
-          "@c": path.resolve(__dirname, "./src/components"),
-          "@p": path.resolve(__dirname, "./src/pages")
+          "@components": path.resolve(__dirname, "./src/components"),
+          "@common": path.resolve(__dirname, "./src/common"),
+          "@api": path.resolve(__dirname, "./src/api"),
+          "@router": path.resolve(__dirname, "./src/router"),
+          "@views": path.resolve(__dirname, "./src/views"),
+          "@data": path.resolve(__dirname, "./src/data"),
+          "@public": path.resolve(__dirname, "public"),
+          "@utils": path.resolve(__dirname, "./src/utils")
         } // 别名配置
       }
-
     });
   },
   productionSourceMap: false, // 生产环境是否生成 sourceMap 文件
@@ -57,12 +63,13 @@ module.exports = {
       errors: true
     }, // 错误、警告在页面弹出
     proxy: {
-      "/api": {
-        target: "http://www.baidu.com/api",
+      "/devApi": {
+        // target: "http://mall-pre.springboot.cn/",
+        target: "http://www.web-jshtml.cn/vue_admin_api/",
         changeOrigin: true, // 允许websockets跨域
         // ws: true,
         pathRewrite: {
-          "^/api": ""
+          "^/devApi": ""
         }
       }
     } // 代理转发配置，用于调试环境
