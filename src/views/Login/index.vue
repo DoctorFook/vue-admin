@@ -257,7 +257,7 @@ export default {
           console.log(res);
           this.$message.success("注册成功");
         })
-        .catch((err) => {});
+        .catch(() => {});
     },
     // 登录
     login(data) {

@@ -1,6 +1,6 @@
 import router from "./index";
-import store from '../store/index'
-import { getToken, removeToken, removeUserName } from "../utils/saveToken";
+import store from "../store/index";
+import { getToken } from "../utils/saveToken";
 // 白名单
 const whiteRouter = ["/login"];
 // 路由守卫
@@ -11,7 +11,7 @@ router.beforeEach((to, from, next) => {
       // location.reload();
       // removeToken();
       // removeUserName();
-      store.commit("login/logout")
+      store.commit("login/logout");
       next();
     } else {
       next();
