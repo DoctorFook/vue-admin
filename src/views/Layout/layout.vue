@@ -1,9 +1,9 @@
 <template>
-<div class="wrap">
-<Head></Head>
-<Main></Main>
-<Nav></Nav>
-</div>
+  <div class="wrap" :class="menuStatus ? 'close' : 'open'">
+    <Head></Head>
+    <Main></Main>
+    <Nav></Nav>
+  </div>
 </template>
 
 <script>
@@ -22,14 +22,18 @@ export default {
     Nav
   },
   watch: {},
-  computed: {},
+  computed: {
+    menuStatus() {
+      return this.$store.state.app.isCollapse;
+    }
+  },
   methods: {},
   created() {},
   mounted() {}
 };
 </script>
 <style lang="scss" scoped>
- .wrap{
-   background-color: rosybrown;
- }
+.wrap {
+  background-color: rosybrown;
+}
 </style>

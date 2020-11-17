@@ -3,7 +3,7 @@
     <div class="login-wrap">
       <ul class="menu-tap">
         <li
-        class="twoBtn"
+          class="twoBtn"
           @click="change(item, index)"
           :class="{ active: isActive == index }"
           v-for="(item, index) in menutab"
@@ -56,7 +56,7 @@
           ><label>验证码</label>
           <el-row :gutter="11">
             <el-col :span="14"
-              ><el-input v-model.number="ruleForm.code"></el-input
+              ><el-input v-model="ruleForm.code"></el-input
             ></el-col>
             <el-col :span="10"
               ><el-button
@@ -96,7 +96,7 @@
 <script>
 import sha1 from "js-sha1";
 import { stripscript, regEmail, regCode, regPassword } from "@utils/validate";
-import { getListAPI, postFormAPI, getSms, register, login } from "@/api/api.js";
+import { postFormAPI, getSms, register, login } from "@/api/api.js";
 export default {
   name: "",
   setup() {},
@@ -133,14 +133,15 @@ export default {
       }
     };
     var checkCode = (rule, value, callback) => {
-      if (value == "") {
-        callback(new Error("请输入验证码"));
+      if (value === "") {
+        return callback(new Error("请输入验证码"));
       } else if (regCode(value)) {
-        callback(new Error("请输入正确验证码格式"));
+        return callback(new Error("验证码格式有误"));
       } else {
         callback();
       }
     };
+
     return {
       ruleForms: "ruleForm",
       module: "login",
@@ -210,7 +211,7 @@ export default {
               }, 2000);
               let message = res.data.message.substr(11, 6);
               this.yzm = message;
-              console.log(message);
+              alert(message);
             } else {
               this.$message.error("请输入邮箱和密码");
               return false;
@@ -238,7 +239,6 @@ export default {
             password: sha1(this.ruleForm.pass),
             code: this.yzm
           };
-          console.log(data.password);
           if (this.module == "register") {
             this.register(data);
           } else {
@@ -263,8 +263,10 @@ export default {
     login(data) {
       postFormAPI(login, data)
         .then((res) => {
-          this.$message.success("登录成功");
           console.log(res);
+          this.$message.success("登录成功");
+          console.log(res.data.data.token);
+          this.$store.commit("login/showToken", res.data.data);
           this.$router.push({ name: "Layout" });
         })
         .catch((err) => {
@@ -281,7 +283,7 @@ export default {
 };
 </script>
 
-<style lang="scss" rel=”stylesheet/scss” scoped>
+<style lang="scss" scoped>
 .login {
   width: 100%;
   background-color: #344a5f;
@@ -297,18 +299,18 @@ export default {
   text-align: center;
 }
 
-.menu-tap li{
-    display: inline-block;
-    width: 88px;
-    line-height: 36px;
-    font-size: 14px;
-    color: #fff;
-    border-radius: 2px;
-    cursor: pointer;
+.menu-tap li {
+  display: inline-block;
+  width: 88px;
+  line-height: 36px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 2px;
+  cursor: pointer;
 }
-  .el-form-item__label {
-    color: white;
-  }
+.el-form-item__label {
+  color: white;
+}
 
 .active {
   background-color: rgba(0, 0, 0, 0.1);

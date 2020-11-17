@@ -20,7 +20,7 @@ const routes = [
   {
     path: "/console",
     name: "Layout",
-    redirect: "Index",
+    redirect: "/index",
     meta: { name: "控制台", icon: "iconfont icon-kongzhitai" },
     component: Layout,
     children: [

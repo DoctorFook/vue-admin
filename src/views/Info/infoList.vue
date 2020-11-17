@@ -1,22 +1,20 @@
 <template>
-    <div>信息列表</div>
+  <div>信息列表</div>
 </template>
 
 <script>
 export default {
-  name:'InfoList',
-  data(){
-    return {
-    }
+  name: "InfoList",
+  data() {
+    return {};
   },
-  props:{},
-  components:{},
-  watch:{},
-  computed:{},
-  methods:{},
-  created(){},
-  mounted(){}
-}
+  props: {},
+  components: {},
+  watch: {},
+  computed: {},
+  methods: {},
+  created() {},
+  mounted() {}
+};
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

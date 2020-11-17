@@ -2,7 +2,20 @@
 .el-menu-item.is-active {
   background-color: $mainColor !important;
 }
-.el-menu-item:hover{
-    background-color: $mainColor !important;
-
+.el-menu-item:hover {
+  background-color: $mainColor !important;
 }
+.close {
+  .el-submenu {
+    &.is-opened {
+       .el-submenu__title:hover {
+        background-color: red;
+      }
+    }
+  }
+}
+.el-menu--vertical{
+  .el-menu-item:hover{
+    background-color: red;
+  }
+} 

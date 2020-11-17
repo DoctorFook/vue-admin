@@ -30,10 +30,5 @@ export function regPassword(value) {
 // 验证验证码
 export function regCode(value) {
   let reg = /^[a-z0-9]{6}$/;
- 
-  if (!reg.test(value)) {
-    return true;
-  } else {
-    return false;
-  }
+  return !reg.test(value) ? true : false;
 }

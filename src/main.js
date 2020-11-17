@@ -10,6 +10,7 @@ import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
 import "./assets/iconfont/icon.css";
 import VueAxios from "vue-axios";
+import "../src/router/premit";
 
 // axios.defaults.baseURL = "/devApi";
 Vue.use(VueAxios, axios);

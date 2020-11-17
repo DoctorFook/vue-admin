@@ -1,10 +1,7 @@
 import axios from "axios";
 import { Message } from "element-ui";
 // 创建axios,赋给变量service
-const baseurl =
-  process.env.NODE_ENV === "production  "
-    ? ""
-    : "/devApi";
+const baseurl = process.env.NODE_ENV === "production  " ? "" : "/devApi";
 const service = axios.create({
   // 公共接口--这里注意后面会讲
   baseURL: baseurl,
@@ -36,11 +33,11 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     //接收到响应数据并成功后的一些共有的处理，关闭loading等
-    let data = response.data
-    if(data.resCode!==0){
-      Message.error(data.message)
-      return Promise.reject(data)
-    }else{
+    let data = response.data;
+    if (data.resCode !== 0) {
+      Message.error(data.message);
+      return Promise.reject(data);
+    } else {
       return response;
     }
   },
