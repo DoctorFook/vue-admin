@@ -15,7 +15,8 @@ import global from "@/utils/global.js";
 Vue.use(global);
 // axios.defaults.baseURL = "/devApi";
 Vue.use(VueAxios, axios);
-Vue.use(ElementUI);
+Vue.use(ElementUI) ;
+
 Vue.use(VueCompositionAPI);
 
 Vue.config.productionTip = false;
