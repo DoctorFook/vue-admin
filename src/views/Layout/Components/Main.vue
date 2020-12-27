@@ -20,6 +20,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main-wrap {
+  overflow: auto;
   position: fixed;
   top: 75px;
   left: $navMenu;

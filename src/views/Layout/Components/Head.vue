@@ -7,7 +7,7 @@
       ></span>
       <div class="name ">
         <img src="@/assets/logo.png" alt="" />
-        <span>{{ this.$store.state.login.userName }}</span>
+        <div>{{userName}}</div>
       </div>
       <span
         class="head-icon iconfont icon-ai240 closeBtn"
@@ -18,10 +18,13 @@
 </template>
 
 <script>
+import {getUserName} from '../../../utils/saveToken'
 export default {
   name: "",
   data() {
-    return {};
+    return {
+      userName:""
+    };
   },
   props: {},
   components: {},
@@ -53,10 +56,17 @@ export default {
             message: "取消"
           });
         });
+    },
+    getUsernameStorage(){
+      if(getUserName()){
+        this.userName = sessionStorage.getItem("userName");
+      }
     }
   },
   created() {},
-  mounted() {}
+  mounted() {
+    this.getUsernameStorage()
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -108,7 +118,7 @@ export default {
     right: 10.417vw;
     line-height: 75px;
     padding-left: 20px;
-    span {
+    div {
       font-size: 16px;
     }
     img {

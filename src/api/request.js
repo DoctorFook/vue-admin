@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Message } from "element-ui";
+import { getToken, getUserName } from "../utils/saveToken";
 // 创建axios,赋给变量service
 const baseurl = process.env.NODE_ENV === "production  " ? "" : "/devApi";
 const service = axios.create({
@@ -18,11 +19,13 @@ service.interceptors.request.use(
       "Content-Type": "application/x-www-form-urlencoded" //配置请求头
     };
     //注意使用token的时候需要引入cookie方法或者用本地localStorage等方法，推荐js-cookie
-    // const token = getStorage("email"); //这里取token之前，你肯定需要先拿到token,存一下
+    // const token = getToken(); //这里取token之前，你肯定需要先拿到token,存一下
     // if (token) {
     //   config.params = { token: token }; //如果要求携带在参数中
     //   config.headers.token = token; //如果要求携带在请求头中
     // }
+    config.headers.token = getToken();
+    config.headers.userName = getUserName();
     return config;
   },
   (error) => {
