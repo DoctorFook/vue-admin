@@ -117,12 +117,12 @@
               @click="handleEdit(scope.$index, scope.row)"
               >编辑</el-button
             >
-            <el-button
+            <!-- <el-button
               size="mini"
               type="success"
               @click="handleEdit(scope.$index, scope.row)"
               >编辑详情</el-button
-            >
+            > -->
           </template>
         </el-table-column>
       </el-table>
