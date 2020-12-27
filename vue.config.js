@@ -46,7 +46,7 @@ module.exports = {
         prependData: `@import  "./src/styles/main.scss";`
       },
       // 这里的选项会传递给 css-loader
-      postcss: {
+      postcss:{
         plugins: [
           require("postcss-px-to-viewport")({
             unitToConvert: "px", // 需要转换的单位，默认为"px"
