@@ -78,14 +78,10 @@ export default {
     close() {},
     open() {
       this.editRow = this.$store.state.app.editRow;
-      console.log(this.category);
-      console.log(this.editRow);
-      console.log(this.editRow.id);
-      console.log(this.editRow.categoryId);
       // this.value = this.editRow.categoryname
       this.input = this.editRow.title;
       this.textarea = this.editRow.content;
-      this.value = this.editRow.categoryId;
+      // this.value = this.editRow.categoryId;
     },
     submit() {
       this.dialogVisible = false;
@@ -102,22 +98,25 @@ export default {
         postFormAPI(addInfo, data).then((res) => {
           console.log(res);
           this.$message.success(res.data.message);
+        this.$emit("getList");
         });
       } else {
         let data = {
           id: this.editRow.id,
-          categoryId: this.categoryId,
-          title: this.input,
-          // updateDate: this.createDate,
-          // imgUrl: this.createDate,
-          content: this.textarea
+          categoryId: this.editRow.categoryId,
+          title: this.editRow.title,
+          updateDate: this.editRow.updateDate,
+          content: this.editRow.content,
+          imgUrl: this.editRow.imgUrl
         };
+
+        console.log(this.editRow);
         postFormAPI(editInfo, data).then((res) => {
-          console.log(res);
+          console.log(res.data.message);
+          this.$message.success(res.data.message);
+        this.$emit("getList");
         });
       }
-
-      this.$emit("getList");
     },
 
     event(e) {

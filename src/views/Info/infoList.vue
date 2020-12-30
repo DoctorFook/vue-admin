@@ -85,7 +85,7 @@
       >
         <el-table-column type="selection" width="45"> </el-table-column>
 
-        <el-table-column prop="title" label="标题" width="800">
+        <el-table-column prop="title" label="标题" width="708">
         </el-table-column>
         <el-table-column
           prop="id"
@@ -103,7 +103,7 @@
         </el-table-column>
         <el-table-column prop="user" label="管理人" width="115">
         </el-table-column>
-        <el-table-column label="操作" width="180">
+        <el-table-column label="操作" width="280">
           <template slot-scope="scope">
             <el-button
               size="mini"
@@ -116,6 +116,13 @@
               type="success"
               @click="handleEdit(scope.$index, scope.row)"
               >编辑</el-button
+            >
+            <el-button
+              class="infoEditBtn"
+              size="mini"
+              type="success"
+              @click="toEditDetail(scope.row)"
+              >编辑详情</el-button
             >
           </template>
         </el-table-column>
@@ -228,6 +235,17 @@ export default {
     }
   },
   methods: {
+    // 跳转到编辑详情页面
+    toEditDetail(row) {
+      this.$router.push({
+        name: "InfoEdit",
+        params: {
+          row: row
+        }
+      });
+      this.$store.commit("app/getInfoDetail", row);
+    },
+    // 搜索
     search() {
       console.log(this.value); //id
       console.log(this.value2); //time
@@ -247,7 +265,7 @@ export default {
     getList(searchData) {
       if (this.input != 0) {
         postFormAPI(getList, searchData).then((res) => {
-          // console.log(res.data.data.data);
+          console.log(res);
           this.tableData = res.data.data.data;
           this.total = res.data.data.total;
         });
@@ -262,7 +280,7 @@ export default {
           pageSize: this.page.pageSize
         };
         postFormAPI(getList, data).then((res) => {
-          // console.log(res.data.data.data);
+          console.log(res.data.data.data);
           this.tableData = res.data.data.data;
           this.total = res.data.data.total;
         });
@@ -390,6 +408,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.infoEditBtn {
+  margin-left: 10px;
+}
 .el-row {
   margin-bottom: 20px;
   &:last-child {

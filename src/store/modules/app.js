@@ -4,7 +4,8 @@ const app = {
   state: {
     isCollapse: false,
     category: [],
-    editRow:{}
+    editRow: {},
+    detail: []
   },
   getters: {},
   mutations: {
@@ -15,17 +16,21 @@ const app = {
     getCategoryAll(state) {
       postFormAPI(getCategory)
         .then((res) => {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           state.category = res.data.data;
           // console.log(state.category);
+          sessionStorage.setItem("category", JSON.stringify(state.category));
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    sendRow(state,row){
-      state.editRow = row
-      
+    sendRow(state, row) {
+      state.editRow = row;
+    },
+    getInfoDetail(state, row) {
+      state.detail = row;
+      sessionStorage.setItem("detail", JSON.stringify(state.detail));
     }
   },
   actions: {}

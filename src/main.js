@@ -12,6 +12,7 @@ import "./assets/iconfont/icon.css";
 import VueAxios from "vue-axios";
 import "../src/router/premit";
 import global from "@/utils/global.js";
+
 Vue.use(global);
 // axios.defaults.baseURL = "/devApi";
 Vue.use(VueAxios, axios);

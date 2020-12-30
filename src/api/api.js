@@ -34,6 +34,8 @@ let deleteInfo = `/news/deleteInfo/`;
 let editInfo = `/news/editInfo/`;
 // 添加子级
 let addChild = `/news/addChildrenCategory/`;
+// 获取七牛云地址
+let qiniuToken = `/uploadImgToken/`
 // get请求
 export function getListAPI(url, params) {
   return http.get(url, params);
@@ -64,5 +66,6 @@ export {
   addInfo,
   deleteInfo,
   editInfo,
-  addChild
+  addChild,
+  qiniuToken
 };

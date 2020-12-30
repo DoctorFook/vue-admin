@@ -18,11 +18,13 @@
             <i :class="item.meta.icon"></i>
             <span class="metaName">{{ item.meta.name }}</span>
           </template>
-          <el-menu-item
-            :index="subItem.path + ''"
-            v-for="(subItem, index) in item.children"
-            :key="index"
-            >{{ subItem.meta.name }}</el-menu-item
+          <template v-for="(subItem, index) in item.children">
+            <el-menu-item
+              v-if="!subItem.hidden"
+              :index="subItem.path + ''"
+              :key="index"
+              >{{ subItem.meta.name }}</el-menu-item
+            ></template
           >
         </el-submenu>
       </template>
