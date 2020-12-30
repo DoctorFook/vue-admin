@@ -2,7 +2,7 @@
   <div>
     <el-form>
       <el-form-item>
-        信息分类112221:
+        信息分类112:
         <el-select v-model="infoDetail.categoryId" placeholder="请选择分类">
           <el-option
             v-for="item in category"
