@@ -12,6 +12,13 @@ import "./assets/iconfont/icon.css";
 import VueAxios from "vue-axios";
 import "../src/router/premit";
 import global from "@/utils/global.js";
+// 城市联动
+// import { pcaa } from "area-data-vue";
+// import "area-linkage-vue/dist/index.css";
+// import AreaLinkageVue from "area-linkage-vue";
+// Vue.prototype.$pcaa = pcaa;
+
+// Vue.use(AreaLinkageVue);
 
 Vue.use(global);
 // axios.defaults.baseURL = "/devApi";

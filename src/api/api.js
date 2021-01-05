@@ -35,7 +35,23 @@ let editInfo = `/news/editInfo/`;
 // 添加子级
 let addChild = `/news/addChildrenCategory/`;
 // 获取七牛云地址
-let qiniuToken = `/uploadImgToken/`
+let qiniuToken = `/uploadImgToken/`;
+// 获取用户列表
+let getUserList = `/user/getList/`;
+// 省市区
+let cityPicker = `/cityPicker/`;
+// 获取角色
+let role = `/role/`;
+// 用户添加
+let addUser = `/user/add/`;
+// 用户删除
+let deleteUser = `/user/delete/`;
+// 用户禁启用
+let userActive = `/user/actives/`;
+// 用户编辑
+let userEdit = `/user/edit/`;
+// 用户角色
+let userRole = `/userRole/`
 // get请求
 export function getListAPI(url, params) {
   return http.get(url, params);
@@ -67,5 +83,13 @@ export {
   deleteInfo,
   editInfo,
   addChild,
-  qiniuToken
+  qiniuToken,
+  getUserList,
+  cityPicker,
+  role,
+  addUser,
+  deleteUser,
+  userActive,
+  userEdit,
+  userRole
 };

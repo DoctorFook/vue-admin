@@ -5,7 +5,9 @@ const app = {
     isCollapse: false,
     category: [],
     editRow: {},
-    detail: []
+    detail: [],
+    userList:[],
+    userId:[]
   },
   getters: {},
   mutations: {
@@ -31,6 +33,14 @@ const app = {
     getInfoDetail(state, row) {
       state.detail = row;
       sessionStorage.setItem("detail", JSON.stringify(state.detail));
+    },
+    getUserList(state,row){
+      state.userList = row
+      console.log(state.userList);
+    },
+    getUserId(state,row){
+      state.userId = row
+      console.log(state.userId);
     }
   },
   actions: {}
